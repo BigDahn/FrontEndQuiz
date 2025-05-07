@@ -5,7 +5,6 @@ import QuizTileBox from "./QuizTileBox";
 function QuizContainer() {
   const { data } = useQuiz();
 
-  console.log(data);
   return (
     <div className="flex flex-col gap-3">
       {data.map((s, i) => {
