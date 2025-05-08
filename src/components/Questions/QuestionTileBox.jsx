@@ -3,7 +3,14 @@ import { useQuiz } from "../../contexts/Quiz";
 import Questions from "./Questions";
 
 function QuestionTileBox({ questions }) {
-  const { questionStart, totalQuestions, selectedAnswer, dispatch } = useQuiz();
+  const {
+    questionStart,
+    totalQuestions,
+    selectedAnswer,
+    correctAnswer,
+    error,
+    dispatch,
+  } = useQuiz();
   console.log(selectedAnswer);
 
   const disabled = questionStart >= questions.length;
@@ -37,21 +44,37 @@ function QuestionTileBox({ questions }) {
 
         <div className="flex flex-col gap-4">
           {options.map((s, i) => {
+            console.log(s === correctAnswer);
+            console.log(correctAnswer);
             return (
-              <div
-                className="bg-[#FFFFFF] w-[25em] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between gap-2"
+              <button
+                className="bg-[#FFFFFF] cursor-pointer w-[27rem] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
                 key={i}
                 role="button"
                 onClick={() => dispatch({ type: "select", payload: `${s}` })}
+                disabled={selectedAnswer}
               >
-                <div className="flex gap-3 items-center ">
+                <div className="flex gap-2 justify-between text-[15px] items-center ">
                   <h3 className="bg-gray-300 px-4 py-2 rounded-md">
                     {indexToLetter(i)}
                   </h3>
-                  <span>{s}</span>
+                  <span className="text-left max-w-[21rem]">{s}</span>
                 </div>
-                <img src="/assets/images/icon-incorrect.svg" className="w-6" />
-              </div>
+                {selectedAnswer &&
+                  (s === correctAnswer ? (
+                    <img
+                      src="/assets/images/icon-correct.svg"
+                      className="w-6"
+                    />
+                  ) : s === selectedAnswer ? (
+                    <img
+                      src="/assets/images/icon-incorrect.svg"
+                      className="w-6"
+                    />
+                  ) : (
+                    ""
+                  ))}
+              </button>
             );
           })}
           {questionStart >= totalQuestions ? (
@@ -65,8 +88,14 @@ function QuestionTileBox({ questions }) {
                 dispatch({ type: "next" });
               }}
             >
-              Next Question
+              Submit Question
             </button>
+          )}
+          {error && (
+            <div className="text-red-600 text-center flex items-center gap-2 justify-center font-Rubix_Regular">
+              <img src="/assets/images/icon-error.svg" className="w-5" />
+              <h3>Please select an answer</h3>
+            </div>
           )}
         </div>
       </div>

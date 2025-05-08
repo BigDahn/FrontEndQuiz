@@ -14,6 +14,7 @@ const initialState = {
   totalQuestions: null,
   selectedAnswer: null,
   correctAnswer: null,
+  error: false,
 };
 
 function reducer(state, action) {
@@ -51,16 +52,20 @@ function reducer(state, action) {
       console.log(number);
       return {
         ...state,
-        questionStart: number,
+        questionStart:
+          state.selectedAnswer === null ? state.questionStart : number,
+        error: state.selectedAnswer === null ? true : false,
+        selectedAnswer: null,
       };
     }
     case "select": {
       const d = state.data[0].questions[state.questionStart - 1].answer;
-      console.log(d === action.payload);
+      console.log(action.payload);
       return {
         ...state,
         selectedAnswer: action.payload,
         correctAnswer: d,
+        error: false,
       };
     }
   }
@@ -77,6 +82,7 @@ function FrontEndQuiz({ children }) {
       totalQuestions,
       selectedAnswer,
       correctAnswer,
+      error,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -91,6 +97,7 @@ function FrontEndQuiz({ children }) {
         isLoading,
         questionStart,
         totalQuestions,
+        error,
         dispatch,
       }}
     >
