@@ -7,10 +7,10 @@ function Heading() {
 
   return (
     <div className="flex items-center justify-between ">
-      {data.map((s) => {
+      {data.map((s, i) => {
         const { icon } = s;
         return (
-          <div className="bg-red-300 rounded-md py-2 px-2 shadow-2xl">
+          <div className="bg-red-300 rounded-md py-2 px-2 shadow-2xl" key={i}>
             <img src={icon} />
           </div>
         );

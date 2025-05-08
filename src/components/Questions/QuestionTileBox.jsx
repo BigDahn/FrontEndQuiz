@@ -42,7 +42,7 @@ function QuestionTileBox({ questions }) {
                 className="bg-[#FFFFFF] w-[25em] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between gap-2"
                 key={i}
                 role="button"
-                onClick={() => dispatch({ type: "select", payload: i })}
+                onClick={() => dispatch({ type: "select", payload: `${s}` })}
               >
                 <div className="flex gap-3 items-center ">
                   <h3 className="bg-gray-300 px-4 py-2 rounded-md">

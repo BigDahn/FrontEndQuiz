@@ -55,12 +55,12 @@ function reducer(state, action) {
       };
     }
     case "select": {
-      const d = state.data[0].questions[state.questionStart - 1].answerg;
-      console.log(d);
+      const d = state.data[0].questions[state.questionStart - 1].answer;
+      console.log(d === action.payload);
       return {
         ...state,
         selectedAnswer: action.payload,
-        correctAnswer: state.data,
+        correctAnswer: d,
       };
     }
   }
