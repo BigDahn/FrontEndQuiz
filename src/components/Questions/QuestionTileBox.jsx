@@ -3,8 +3,8 @@ import { useQuiz } from "../../contexts/Quiz";
 import Questions from "./Questions";
 
 function QuestionTileBox({ questions }) {
-  const { questionStart, totalQuestions, dispatch } = useQuiz();
-  console.log(questionStart - 1);
+  const { questionStart, totalQuestions, selectedAnswer, dispatch } = useQuiz();
+  console.log(selectedAnswer);
 
   const disabled = questionStart >= questions.length;
 
@@ -41,6 +41,8 @@ function QuestionTileBox({ questions }) {
               <div
                 className="bg-[#FFFFFF] w-[25em] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between gap-2"
                 key={i}
+                role="button"
+                onClick={() => dispatch({ type: "select", payload: i })}
               >
                 <div className="flex gap-3 items-center ">
                   <h3 className="bg-gray-300 px-4 py-2 rounded-md">

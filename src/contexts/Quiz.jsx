@@ -12,6 +12,8 @@ const initialState = {
   data: quizzes,
   questionStart: 1,
   totalQuestions: null,
+  selectedAnswer: null,
+  correctAnswer: null,
 };
 
 function reducer(state, action) {
@@ -52,19 +54,39 @@ function reducer(state, action) {
         questionStart: number,
       };
     }
+    case "select": {
+      const d = state.data[0].questions[state.questionStart - 1].answerg;
+      console.log(d);
+      return {
+        ...state,
+        selectedAnswer: action.payload,
+        correctAnswer: state.data,
+      };
+    }
   }
 }
 
 function FrontEndQuiz({ children }) {
   const [
-    { status, isDarkMode, data, isLoading, questionStart, totalQuestions },
+    {
+      status,
+      isDarkMode,
+      data,
+      isLoading,
+      questionStart,
+      totalQuestions,
+      selectedAnswer,
+      correctAnswer,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   return (
     <QuizContext.Provider
       value={{
         status,
+        selectedAnswer,
         isDarkMode,
+        correctAnswer,
         data,
         isLoading,
         questionStart,
