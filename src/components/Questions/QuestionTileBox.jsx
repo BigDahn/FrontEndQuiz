@@ -32,15 +32,22 @@ function QuestionTileBox({ questions }) {
     }
   }
 
+  //
   return (
-    <div className=" w-[60rem] h-[27rem] ">
-      <h1 className="font-Rubik font-extralight">
+    <div className=" w-[60rem] h-[27rem] hover:transition hover:ease-linear hover:duration-700 ">
+      <h1
+        className={`${
+          isDarkMode
+            ? "font-Rubik font-extralight text-[#ABC1E1]"
+            : "font-Rubik font-extralight text-[#626C7F]"
+        }`}
+      >
         Question {questionStart} of {totalQuestions}
       </h1>
       <div className="flex gap-[10rem] items-start justify-between">
         <Questions question={question} />
 
-        <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col gap-4 hover:transition hover:ease-linear hover:duration-700  ">
           {options.map((s, i) => {
             //3B4D66
             return (
@@ -49,45 +56,53 @@ function QuestionTileBox({ questions }) {
                   isAnswerSubmitted
                     ? s === correctAnswer
                       ? isDarkMode
-                        ? "bg-[#3B4D66] shadow-lg cursor-pointer border-green-400 border px-4 w-[27rem]  py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                        : "bg-[#FFFFFF] shadow-lg cursor-pointer w-[27rem] border-green-400 border   px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                        ? "bg-[#3B4D66] shadow-lg cursor-pointer border-green-400 border-2 px-4 w-[27rem] min-h-[4rem]  py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                        : "bg-[#FFFFFF] shadow-lg cursor-pointer w-[27rem] border-green-400 border-2 min-h-[4rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                       : s === selectedAnswer
                       ? isDarkMode
-                        ? "bg-[#3B4D66] shadow-lg cursor-pointer w-[27rem] border-red-400 border px-4   py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                        : "bg-[#FFFFFF] shadow-lg cursor-pointer w-[27rem] border-red-400 border px-4   py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                        ? "bg-[#3B4D66] shadow-lg cursor-pointer w-[27rem] border-red-400 border-2 px-4 min-h-[4rem]  py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                        : "bg-[#FFFFFF] shadow-lg cursor-pointer w-[27rem] border-red-400 border-2 px-4   py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                       : isDarkMode
-                      ? "bg-[#3B4D66] shadow-lg cursor-pointer   w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                      : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      ? "bg-[#3B4D66] shadow-lg cursor-pointer   w-[27rem]  px-4 py-[9px] rounded-2xl min-h-[4rem] font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] rounded-2xl min-h-[4rem] font-Rubix_Regular text-black flex justify-between items-center gap-2"
                     : s === selectedAnswer
                     ? isDarkMode
-                      ? "bg-[#3B4D66] shadow-lg cursor-pointer border border-[#A729F5] w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                      : "bg-[#FFFFFF] shadow-lg cursor-pointer border border-[#A729F5]  w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      ? "bg-[#3B4D66] shadow-lg cursor-pointer border-2 border-[#A729F5] min-h-[4rem]  w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      : "bg-[#FFFFFF] shadow-lg cursor-pointer border-2 border-[#A729F5] min-h-[4rem] w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                     : isDarkMode
-                    ? "bg-[#3B4D66] shadow-lg cursor-pointer   w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                    : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                    ? "bg-[#3B4D66] shadow-lg cursor-pointer   w-[27rem]  px-4 py-[9px] hover:border-2 hover:border-[#A729F5] min-h-[4rem] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                    : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] min-h-[4rem] hover:border-2 hover:border-[#A729F5] hover:transition hover:ease-linear hover:duration-700 hover:animate rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                 }`}
                 key={i}
                 role="button"
                 onClick={() => dispatch({ type: "select", payload: `${s}` })}
                 disabled={isAnswerSubmitted}
               >
-                <div className="flex gap-2 justify-between text-[15px] items-center ">
+                <div className="flex gap-2 justify-between text-[15px] items-center font-Rubix_Regular">
                   <h3
                     className={`${
                       isAnswerSubmitted
                         ? s === correctAnswer
-                          ? "bg-green-400 px-4 py-2 rounded-md"
+                          ? "bg-green-400 px-4 py-2 rounded-md text-white font-bold"
                           : s === selectedAnswer
-                          ? "bg-red-400 px-4 py-2 rounded-md"
-                          : "bg-gray-300 px-4 py-2 rounded-md"
+                          ? "bg-red-400 px-4 py-2 rounded-md text-white font-bold"
+                          : "bg-[#F4F6FA] px-4 py-2 rounded-md text-[#626c7F] font-bold"
                         : s === selectedAnswer
-                        ? "bg-[#A729F5] px-4 py-2 rounded-md"
-                        : "bg-gray-300 px-4 py-2 rounded-md"
+                        ? "bg-[#A729F5] px-4 py-2 rounded-md text-white font-bold"
+                        : "bg-[#F4F6FA] px-4 py-2 rounded-md text-[#626C7F] font-bold"
                     }`}
                   >
                     {indexToLetter(i)}
                   </h3>
-                  <span className="text-left max-w-[21rem]">{s}</span>
+                  <span
+                    className={`${
+                      isDarkMode
+                        ? "text-[#FFFFFF] text-left max-w-[21rem]"
+                        : "text-[#313E51] text-left max-w-[21rem]"
+                    }`}
+                  >
+                    {s}
+                  </span>
                 </div>
                 {isAnswerSubmitted ? (
                   s === correctAnswer ? (
@@ -111,7 +126,11 @@ function QuestionTileBox({ questions }) {
           })}
           {questionStart >= totalQuestions ? (
             <button
-              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+              className={`${
+                selectedAnswer
+                  ? "bg-purple-500 py-3  rounded-md font-Rubix_Regular text-[#FFFFFF]"
+                  : "bg-[#d394fa] py-3  rounded-md font-Rubix_Regular text-[#FFFFFF]"
+              }`}
               onClick={() => {
                 dispatch({ type: "lastQuestion" });
               }}
@@ -120,7 +139,7 @@ function QuestionTileBox({ questions }) {
             </button>
           ) : isAnswerSubmitted ? (
             <button
-              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular text-[#FFFFFF]"
               onClick={() => {
                 dispatch({ type: "next" });
               }}
@@ -129,7 +148,11 @@ function QuestionTileBox({ questions }) {
             </button>
           ) : (
             <button
-              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+              className={`${
+                selectedAnswer
+                  ? "bg-purple-500 py-3  rounded-md font-Rubix_Regular text-[#FFFFFF]"
+                  : "bg-[#d394fa] py-3  rounded-md font-Rubix_Regular text-[#FFFFFF]"
+              }`}
               onClick={() => {
                 dispatch({ type: "submit" });
               }}

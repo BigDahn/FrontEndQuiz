@@ -15,10 +15,10 @@ function Scores() {
         }`}
       >
         <h3 className="font-Rubix_Regular text-[29px]">
-          {data.map((s) => {
+          {data.map((s, i) => {
             const { title, icon } = s;
             return (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" key={i}>
                 <img src={icon} />
                 <h3
                   className={`${

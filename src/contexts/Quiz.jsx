@@ -73,18 +73,23 @@ function reducer(state, action) {
     }
     case "submit": {
       const d = state.data[0].questions[state.questionStart - 1].answer;
-      const scoreUpdate = action.payload === d ? state.score + 1 : state.score;
+      const scoreUpdate =
+        state.selectedAnswer === d ? state.score + 1 : state.score;
+
+      console.log(scoreUpdate);
       return {
         ...state,
         score: scoreUpdate,
-        correctAnswer: d,
-        isAnswerSubmitted: true,
+        correctAnswer: state.selectedAnswer ? d : null,
+        error: state.selectedAnswer === null ? true : false,
+        isAnswerSubmitted: state.selectedAnswer ? true : false,
       };
     }
     case "lastQuestion": {
       return {
         ...state,
-        status: "finished",
+        error: state.selectedAnswer === null ? true : false,
+        status: state.selectedAnswer ? "finished" : "start",
         isFisnished: state.questionStart >= state.totalQuestions ? true : false,
       };
     }
