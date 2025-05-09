@@ -48,7 +48,9 @@ function reducer(state, action) {
     }
     case "next": {
       const number =
-        state.questionStart >= !state.totalQuestions && state.questionStart + 1;
+        state.questionStart >= state.totalQuestions
+          ? 0
+          : state.questionStart + 1;
       console.log(state.score);
       return {
         ...state,
@@ -70,6 +72,18 @@ function reducer(state, action) {
         correctAnswer: d,
         error: false,
         score: scoreUpdate,
+      };
+    }
+    case "lastQuestion": {
+      return {
+        ...state,
+        status: "finished",
+        isFisnished: state.questionStart >= state.totalQuestions ? true : false,
+      };
+    }
+    case "restart": {
+      return {
+        ...initialState,
       };
     }
   }

@@ -79,16 +79,25 @@ function QuestionTileBox({ questions }) {
               </button>
             );
           })}
-
-          <button
-            className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
-            onClick={() => {
-              dispatch({ type: "next" });
-            }}
-          >
-            Submit Question
-          </button>
-
+          {questionStart >= totalQuestions ? (
+            <button
+              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+              onClick={() => {
+                dispatch({ type: "lastQuestion" });
+              }}
+            >
+              Submit Question
+            </button>
+          ) : (
+            <button
+              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+              onClick={() => {
+                dispatch({ type: "next" });
+              }}
+            >
+              Submit Question
+            </button>
+          )}
           {error && (
             <div className="text-red-600 text-center flex items-center gap-2 justify-center font-Rubix_Regular">
               <img src="/assets/images/icon-error.svg" className="w-5" />

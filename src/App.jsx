@@ -25,7 +25,7 @@ function App() {
       {isLoading && status === "loading" && <Loading />}
       {status === "ready" && <HomePage />}
       {status === "start" && <QuestionPage />}
-      {isFisnished && <ScorePage />}
+      {status === "finished" && isFisnished && <ScorePage />}
     </div>
   );
 }
