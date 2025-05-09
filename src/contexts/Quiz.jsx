@@ -17,6 +17,7 @@ const initialState = {
   error: false,
   score: 0,
   isFinished: false,
+  isAnswerSubmitted: false,
 };
 
 function reducer(state, action) {
@@ -59,18 +60,25 @@ function reducer(state, action) {
         error: state.selectedAnswer === null ? true : false,
         selectedAnswer: null,
         isFisnished: state.questionStart >= state.totalQuestions ? true : false,
+        isAnswerSubmitted: false,
       };
     }
     case "select": {
-      const d = state.data[0].questions[state.questionStart - 1].answer;
-      const scoreUpdate = action.payload === d ? state.score + 1 : state.score;
-
       return {
         ...state,
         selectedAnswer: action.payload,
-        correctAnswer: d,
+
         error: false,
+      };
+    }
+    case "submit": {
+      const d = state.data[0].questions[state.questionStart - 1].answer;
+      const scoreUpdate = action.payload === d ? state.score + 1 : state.score;
+      return {
+        ...state,
         score: scoreUpdate,
+        correctAnswer: d,
+        isAnswerSubmitted: true,
       };
     }
     case "lastQuestion": {
@@ -101,6 +109,7 @@ function FrontEndQuiz({ children }) {
       selectedAnswer,
       correctAnswer,
       isFisnished,
+      isAnswerSubmitted,
       score,
       error,
     },
@@ -118,6 +127,7 @@ function FrontEndQuiz({ children }) {
         isLoading,
         questionStart,
         totalQuestions,
+        isAnswerSubmitted,
         error,
         score,
         dispatch,
