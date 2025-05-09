@@ -11,14 +11,10 @@ function QuestionTileBox({ questions }) {
     error,
     dispatch,
   } = useQuiz();
-  console.log(selectedAnswer);
 
-  const disabled = questionStart >= questions.length;
+  // const disabled = questionStart >= questions.length;
 
-  console.log(disabled);
   const { question, options } = questions[questionStart - 1];
-
-  console.log(questionStart);
 
   function indexToLetter(i) {
     if (i === 0) {
@@ -35,20 +31,26 @@ function QuestionTileBox({ questions }) {
   }
 
   return (
-    <div className=" w-[60rem] h-[27rem]">
+    <div className=" w-[60rem] h-[27rem] ">
       <h1 className="font-Rubik font-extralight">
         Question {questionStart} of {totalQuestions}
       </h1>
       <div className="flex gap-[10rem] items-start justify-between">
         <Questions question={question} />
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 ">
           {options.map((s, i) => {
-            console.log(s === correctAnswer);
-            console.log(correctAnswer);
             return (
               <button
-                className="bg-[#FFFFFF] cursor-pointer w-[27rem] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                className={`${
+                  selectedAnswer
+                    ? s === correctAnswer
+                      ? "bg-[#FFFFFF] shadow-sm cursor-pointer w-[27rem] border-green-400 border px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      : s === selectedAnswer
+                      ? "bg-[#FFFFFF] shadow-sm cursor-pointer w-[27rem] border-red-400 border px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                      : "bg-[#FFFFFF] shadow-sm cursor-pointer w-[27rem] px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                    : "bg-[#FFFFFF] shadow-sm cursor-pointer w-[27rem]   px-4 py-[9px] rounded-md font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                }`}
                 key={i}
                 role="button"
                 onClick={() => dispatch({ type: "select", payload: `${s}` })}
@@ -77,20 +79,16 @@ function QuestionTileBox({ questions }) {
               </button>
             );
           })}
-          {questionStart >= totalQuestions ? (
-            <button className="bg-purple-500 py-3  rounded-md font-Rubix_Regular">
-              Submit
-            </button>
-          ) : (
-            <button
-              className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
-              onClick={() => {
-                dispatch({ type: "next" });
-              }}
-            >
-              Submit Question
-            </button>
-          )}
+
+          <button
+            className="bg-purple-500 py-3  rounded-md font-Rubix_Regular"
+            onClick={() => {
+              dispatch({ type: "next" });
+            }}
+          >
+            Submit Question
+          </button>
+
           {error && (
             <div className="text-red-600 text-center flex items-center gap-2 justify-center font-Rubix_Regular">
               <img src="/assets/images/icon-error.svg" className="w-5" />

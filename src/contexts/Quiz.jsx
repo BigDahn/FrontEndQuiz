@@ -15,6 +15,8 @@ const initialState = {
   selectedAnswer: null,
   correctAnswer: null,
   error: false,
+  score: 0,
+  isFinished: false,
 };
 
 function reducer(state, action) {
@@ -46,26 +48,28 @@ function reducer(state, action) {
     }
     case "next": {
       const number =
-        state.questionStart >= state.totalQuestions
-          ? 0
-          : state.questionStart + 1;
-      console.log(number);
+        state.questionStart >= !state.totalQuestions && state.questionStart + 1;
+      console.log(state.score);
       return {
         ...state,
         questionStart:
           state.selectedAnswer === null ? state.questionStart : number,
         error: state.selectedAnswer === null ? true : false,
         selectedAnswer: null,
+        isFisnished: state.questionStart >= state.totalQuestions ? true : false,
       };
     }
     case "select": {
       const d = state.data[0].questions[state.questionStart - 1].answer;
-      console.log(action.payload);
+      const scoreUpdate = action.payload === d ? state.score + 1 : state.score;
+
+      console.log(scoreUpdate);
       return {
         ...state,
         selectedAnswer: action.payload,
         correctAnswer: d,
         error: false,
+        score: scoreUpdate,
       };
     }
   }
@@ -82,6 +86,7 @@ function FrontEndQuiz({ children }) {
       totalQuestions,
       selectedAnswer,
       correctAnswer,
+      isFisnished,
       error,
     },
     dispatch,
@@ -92,6 +97,7 @@ function FrontEndQuiz({ children }) {
         status,
         selectedAnswer,
         isDarkMode,
+        isFisnished,
         correctAnswer,
         data,
         isLoading,
