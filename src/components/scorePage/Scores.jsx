@@ -1,31 +1,61 @@
 import { useQuiz } from "../../contexts/Quiz";
 
 function Scores() {
-  const { data, dispatch } = useQuiz();
+  const { data, dispatch, score, isDarkMode } = useQuiz();
 
   console.log(data);
   return (
     <section className="min-w-[23rem] flex flex-col gap-3">
       {" "}
-      <div className="bg-white shadow-lg flex flex-col items-center rounded-md  py-[2rem] px-[4rem]">
-        <h3 className="font-Rubix_Regular text-[26px]">
+      <div
+        className={`${
+          isDarkMode
+            ? "bg-[#3B4D66] shadow-2xl flex flex-col items-center rounded-2xl  py-[2rem] px-[4rem]"
+            : "bg-white shadow-2xl flex flex-col items-center rounded-2xl  py-[2rem] px-[4rem]"
+        }`}
+      >
+        <h3 className="font-Rubix_Regular text-[29px]">
           {data.map((s) => {
             const { title, icon } = s;
             return (
               <div className="flex items-center gap-2">
                 <img src={icon} />
-                <h3>{title}</h3>
+                <h3
+                  className={`${
+                    isDarkMode
+                      ? "font-medium  text-white  font-Rubix_Regular"
+                      : "font-medium  text-[#313E51] font-Rubix_Regular"
+                  }`}
+                >
+                  {title}
+                </h3>
               </div>
             );
           })}
         </h3>
-        <div>
-          <h1 className="font-Rubix_Regular text-[100px]">8</h1>
-          <p className="font-Rubix_Medium">out of 10</p>
+        <div className="flex flex-col items-center ">
+          <h1
+            className={`${
+              isDarkMode
+                ? "font-medium  text-white text-[100px] font-Rubix_Regular"
+                : "font-medium  text-[#313E51] text-[100px] font-Rubix_Regular"
+            }`}
+          >
+            {score}
+          </h1>
+          <p
+            className={`${
+              isDarkMode
+                ? "font-medium  text-white text-[2rem] font-Rubix_Regular"
+                : "font-medium  text-[#313E51] text-[2rem] font-Rubix_Regular"
+            }`}
+          >
+            out of 10
+          </p>
         </div>
       </div>
       <button
-        className="bg-[#A729F5] py-4 cursor-pointer rounded-md font-Rubix_Regular font-black text-white"
+        className="bg-[#A729F5] py-4 cursor-pointer rounded-2xl font-Rubix_Regular font-black text-white"
         onClick={() => {
           dispatch({ type: "restart" });
         }}

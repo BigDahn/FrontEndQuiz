@@ -65,7 +65,6 @@ function reducer(state, action) {
       const d = state.data[0].questions[state.questionStart - 1].answer;
       const scoreUpdate = action.payload === d ? state.score + 1 : state.score;
 
-      console.log(scoreUpdate);
       return {
         ...state,
         selectedAnswer: action.payload,
@@ -84,6 +83,7 @@ function reducer(state, action) {
     case "restart": {
       return {
         ...initialState,
+        status: "ready",
       };
     }
   }
@@ -101,6 +101,7 @@ function FrontEndQuiz({ children }) {
       selectedAnswer,
       correctAnswer,
       isFisnished,
+      score,
       error,
     },
     dispatch,
@@ -118,6 +119,7 @@ function FrontEndQuiz({ children }) {
         questionStart,
         totalQuestions,
         error,
+        score,
         dispatch,
       }}
     >
