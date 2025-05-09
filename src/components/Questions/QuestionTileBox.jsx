@@ -44,10 +44,10 @@ function QuestionTileBox({ questions }) {
       >
         Question {questionStart} of {totalQuestions}
       </h1>
-      <div className="flex gap-[10rem] items-start justify-between">
+      <div className="flex gap-[10rem] items-start justify-between h-full">
         <Questions question={question} />
 
-        <div className="flex flex-col gap-4 hover:transition hover:ease-linear hover:duration-700  ">
+        <div className="flex flex-col gap-4   ">
           {options.map((s, i) => {
             //3B4D66
             return (
@@ -71,7 +71,7 @@ function QuestionTileBox({ questions }) {
                       : "bg-[#FFFFFF] shadow-lg cursor-pointer border-2 border-[#A729F5] min-h-[4rem] w-[27rem]  px-4 py-[9px] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                     : isDarkMode
                     ? "bg-[#3B4D66] shadow-lg cursor-pointer   w-[27rem]  px-4 py-[9px] hover:border-2 hover:border-[#A729F5] min-h-[4rem] rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
-                    : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] min-h-[4rem] hover:border-2 hover:border-[#A729F5] hover:transition hover:ease-linear hover:duration-700 hover:animate rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
+                    : "bg-[#FFFFFF] shadow-lg cursor-pointer  w-[27rem]  px-4 py-[9px] min-h-[4rem] hover:border-2 hover:border-[#A729F5]  rounded-2xl font-Rubix_Regular text-black flex justify-between items-center gap-2"
                 }`}
                 key={i}
                 role="button"

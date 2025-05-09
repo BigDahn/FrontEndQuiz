@@ -1,12 +1,13 @@
 import React from "react";
 import { useQuiz } from "../../contexts/Quiz";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 function Questions({ question }) {
-  const { isDarkMode } = useQuiz();
+  const { isDarkMode, questionStart, totalQuestions } = useQuiz();
 
   //
   return (
-    <div>
+    <div className=" flex flex-col justify-between h-[73%] min-w-[23rem] ">
       <h3
         className={`${
           isDarkMode
@@ -16,6 +17,14 @@ function Questions({ question }) {
       >
         {question}
       </h3>
+      <ProgressBar
+        className="w-full h-3"
+        height="10px"
+        bgColor="#A729F5"
+        completed={questionStart}
+        maxCompleted={totalQuestions}
+        isLabelVisible={false}
+      />
     </div>
   );
 }
