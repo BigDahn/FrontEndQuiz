@@ -74,7 +74,13 @@ function QuestionTileBox({ questions }) {
                 <div className="flex gap-2 justify-between text-[15px] items-center ">
                   <h3
                     className={`${
-                      s === selectedAnswer
+                      isAnswerSubmitted
+                        ? s === correctAnswer
+                          ? "bg-green-400 px-4 py-2 rounded-md"
+                          : s === selectedAnswer
+                          ? "bg-red-400 px-4 py-2 rounded-md"
+                          : "bg-gray-300 px-4 py-2 rounded-md"
+                        : s === selectedAnswer
                         ? "bg-[#A729F5] px-4 py-2 rounded-md"
                         : "bg-gray-300 px-4 py-2 rounded-md"
                     }`}
