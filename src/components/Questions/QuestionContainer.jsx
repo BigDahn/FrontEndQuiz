@@ -6,7 +6,7 @@ function QuestionContainer() {
   const { data } = useQuiz();
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {data.map((s, i) => {
         return <QuestionTileBox {...s} key={i} />;
       })}

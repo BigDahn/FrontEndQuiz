@@ -7,8 +7,8 @@ function QuizTileBox({ title, icon }) {
     <section
       className={`${
         isDarkMode
-          ? "bg-[#3B4D66] rounded-xl w-[28rem] px-4 py-3 shadow-2xl cursor-pointer "
-          : "bg-white rounded-xl w-[28rem] px-4 py-3 shadow-2xl cursor-pointer "
+          ? "bg-[#3B4D66] rounded-xl lg:w-[28rem] px-4 py-3 shadow-2xl cursor-pointer "
+          : "bg-white rounded-xl lg:w-[28rem] px-4 py-3 shadow-2xl cursor-pointer "
       }`}
       role="button"
       onClick={() => {

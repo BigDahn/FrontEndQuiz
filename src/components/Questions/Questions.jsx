@@ -7,18 +7,29 @@ function Questions({ question }) {
 
   //
   return (
-    <div className=" flex flex-col justify-between h-[73%] min-w-[23rem] ">
-      <h3
-        className={`${
-          isDarkMode
-            ? "font-Rubix_Regular text-[1.5rem] max-w-[23rem] text-[#FFFFFF] "
-            : "font-Rubix_Regular text-[1.5rem] max-w-[23rem] text-[#313E51] "
-        }`}
-      >
-        {question}
-      </h3>
+    <div className=" flex flex-col gap-3 md:gap-[4rem] w-full lg:h-[20rem] justify-between lg:min-w-[23rem] ">
+      <div>
+        <h1
+          className={`${
+            isDarkMode
+              ? "font-Rubik font-extralight text-[#ABC1E1]"
+              : "font-Rubik font-extralight text-[#626C7F]"
+          }`}
+        >
+          Question {questionStart} of {totalQuestions}
+        </h1>
+        <h3
+          className={`${
+            isDarkMode
+              ? "font-Rubix_Regular text-[1.5rem] md:text-[36px] lg:max-w-[23rem] text-[#FFFFFF] "
+              : "font-Rubix_Regular text-[1.5rem] md:text-[36px] lg:max-w-[23rem] text-[#313E51] "
+          }`}
+        >
+          {question}
+        </h3>
+      </div>
       <ProgressBar
-        className="w-full h-3"
+        className="w-full"
         height="10px"
         bgColor="#A729F5"
         completed={questionStart}
