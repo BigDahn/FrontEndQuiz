@@ -7,7 +7,7 @@ function ScoreDetails() {
   const { isDarkMode } = useQuiz();
   return (
     <div>
-      <div className="flex lg:items-start lg:justify-between flex-col lg:flex-row gap-4 ">
+      <div className="flex w-full h-full lg:items-start lg:justify-between flex-col lg:flex-row gap-4  ">
         <div
           className={`${
             isDarkMode

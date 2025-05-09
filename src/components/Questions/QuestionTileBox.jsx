@@ -115,7 +115,7 @@ function QuestionTileBox({ questions }) {
               </button>
             );
           })}
-          {questionStart >= totalQuestions ? (
+          {questionStart >= totalQuestions && isAnswerSubmitted ? (
             <button
               className={`${
                 selectedAnswer
