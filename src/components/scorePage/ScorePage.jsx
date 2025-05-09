@@ -5,7 +5,7 @@ import ScoreDetails from "./ScoreDetails";
 
 function ScorePage() {
   return (
-    <div className="max-w-[70rem] m-auto w-full px-[2rem] min-h-[100%] flex flex-col gap-[4rem] py-[3rem]  justify-center ">
+    <div className="max-w-[70rem] m-auto w-full h-full px-[1.4rem] flex flex-col gap-[2rem] md:gap-[4rem] md:px-[4rem] py-[2rem] md:py-[3rem]  lg:justify-cente r ">
       <Heading />
       <ScoreDetails />
     </div>

@@ -5,7 +5,7 @@ function Scores() {
 
   console.log(data);
   return (
-    <section className="min-w-[23rem] flex flex-col gap-3">
+    <section className="max-w-[25rem] flex flex-col gap-3">
       {" "}
       <div
         className={`${
