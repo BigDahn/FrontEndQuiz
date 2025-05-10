@@ -1,14 +1,22 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { quizzes } from "../../data.json";
 
 const QuizContext = createContext();
 
+function getStorage() {
+  let theme = localStorage.getItem("theme");
+  if (theme) {
+    return localStorage.getItem("theme");
+  }
+  return false;
+}
+
 const initialState = {
   isLoading: true,
   status: "loading",
-  isDarkMode: false,
+  isDarkMode: getStorage(),
   data: quizzes,
   questionStart: 1,
   totalQuestions: null,
@@ -19,6 +27,8 @@ const initialState = {
   isFinished: false,
   isAnswerSubmitted: false,
 };
+
+//console.log(themeToggle());
 
 function reducer(state, action) {
   switch (action.type) {
@@ -120,6 +130,10 @@ function FrontEndQuiz({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("theme", isDarkMode);
+  }, [isDarkMode]);
   return (
     <QuizContext.Provider
       value={{
