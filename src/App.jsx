@@ -2,14 +2,11 @@ import { useEffect } from "react";
 import HomePage from "./components/Home/HomePage";
 import { useQuiz } from "./contexts/Quiz";
 import Loading from "./Loading";
-import QuestionContainer from "./components/Questions/QuestionContainer";
 import QuestionPage from "./components/Questions/QuestionPage";
 import ScorePage from "./components/scorePage/ScorePage";
 
 function App() {
   const { isDarkMode, dispatch, isLoading, status, isFisnished } = useQuiz();
-
-  console.log(isLoading);
 
   useEffect(() => {
     setTimeout(() => {

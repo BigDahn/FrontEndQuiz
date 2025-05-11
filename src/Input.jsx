@@ -19,8 +19,8 @@ function Input() {
       <div
         className={`${
           isDarkMode
-            ? "relative translate-x-3 h-5.5 w-5.5 rounded-full bg-white transition-all ease-linear  duration-700"
-            : "relative -translate-x-3 h-5.5 w-5.5 rounded-full bg-white  transition-all ease-linear duration-700"
+            ? "relative translate-x-3 h-5.5 w-5.5 rounded-full bg-white transition-all ease-linear  duration-600"
+            : "relative -translate-x-3 h-5.5 w-5.5 rounded-full bg-white  transition-all ease-linear duration-600"
         }`}
       ></div>
     </label>
