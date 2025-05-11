@@ -3,7 +3,6 @@ import { useQuiz } from "../../contexts/Quiz";
 function ThemeToogle() {
   const { isDarkMode, dispatch } = useQuiz();
 
-  console.log(isDarkMode);
   return (
     <div className="flex gap-3 items-center">
       {isDarkMode ? (

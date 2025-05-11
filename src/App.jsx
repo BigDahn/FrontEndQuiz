@@ -9,6 +9,8 @@ import ScorePage from "./components/scorePage/ScorePage";
 function App() {
   const { isDarkMode, dispatch, isLoading, status, isFisnished } = useQuiz();
 
+  console.log(isLoading);
+
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: "loaded" });

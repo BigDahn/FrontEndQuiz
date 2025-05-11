@@ -3,7 +3,6 @@ import { useQuiz } from "../../contexts/Quiz";
 function Scores() {
   const { data, dispatch, score, isDarkMode } = useQuiz();
 
-  console.log(data);
   return (
     <section className="max-w-[25rem] lg:min-w-[25rem]  flex flex-col gap-3 ">
       {" "}

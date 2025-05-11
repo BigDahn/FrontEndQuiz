@@ -62,7 +62,7 @@ function reducer(state, action) {
         state.questionStart >= state.totalQuestions
           ? 0
           : state.questionStart + 1;
-      console.log(state.score);
+
       return {
         ...state,
         questionStart:
@@ -77,20 +77,18 @@ function reducer(state, action) {
       return {
         ...state,
         selectedAnswer: action.payload,
-
         error: false,
       };
     }
     case "submit": {
-      const d = state.data[0].questions[state.questionStart - 1].answer;
+      const answerUpdate =
+        state.data[0].questions[state.questionStart - 1].answer;
       const scoreUpdate =
-        state.selectedAnswer === d ? state.score + 1 : state.score;
-
-      console.log(scoreUpdate);
+        state.selectedAnswer === answerUpdate ? state.score + 1 : state.score;
       return {
         ...state,
         score: scoreUpdate,
-        correctAnswer: state.selectedAnswer ? d : null,
+        correctAnswer: state.selectedAnswer ? answerUpdate : null,
         error: state.selectedAnswer === null ? true : false,
         isAnswerSubmitted: state.selectedAnswer ? true : false,
       };
