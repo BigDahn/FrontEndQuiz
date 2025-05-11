@@ -8,7 +8,7 @@ const QuizContext = createContext();
 function getStorage() {
   let theme = localStorage.getItem("theme");
   if (theme) {
-    return localStorage.getItem("theme");
+    return JSON.parse(localStorage.getItem("theme"));
   }
   return false;
 }
@@ -132,7 +132,7 @@ function FrontEndQuiz({ children }) {
   ] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("theme", isDarkMode);
+    localStorage.setItem("theme", JSON.parse(isDarkMode));
   }, [isDarkMode]);
   return (
     <QuizContext.Provider

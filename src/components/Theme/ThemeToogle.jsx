@@ -1,18 +1,9 @@
-import React, { useState } from "react";
 import { useQuiz } from "../../contexts/Quiz";
 
 function ThemeToogle() {
   const { isDarkMode, dispatch } = useQuiz();
 
-  //console.log(isDarkMode);
-
-  const [theme, setTheme] = useState(false);
-
-  const handleToogle = () => {
-    setTheme(!theme);
-
-    console.log(theme);
-  };
+  console.log(isDarkMode);
   return (
     <div className="flex gap-3 items-center">
       {isDarkMode ? (
@@ -22,22 +13,22 @@ function ThemeToogle() {
       )}
 
       <label
-        for="check"
-        className="inline-flex w-[49px] h-6 items-center justify-center rounded-full bg-purple-600"
+        htmlFor="check"
+        className="inline-flex w-[49px] h-6 items-center justify-center rounded-full bg-purple-600 cursor-pointer"
       >
         <input
           type="checkbox"
           id="check"
           name="check"
-          value={theme}
+          checked={isDarkMode}
           className="sr-only"
-          onChange={() => handleToogle()}
+          onChange={() => dispatch({ type: "toggleTheme" })}
         />
         <div
           className={`${
-            theme
-              ? "relative translate-x-3 h-5.5 w-5.5 rounded-full bg-red-400 transition-all ease-in-out  duration-700"
-              : "relative -translate-x-3 h-5.5 w-5.5 rounded-full bg-white  transition-all ease-in-out duration-700"
+            isDarkMode
+              ? "relative translate-x-3 h-5.5 w-5.5 rounded-full bg-white transition-all ease-linear  duration-700"
+              : "relative -translate-x-3 h-5.5 w-5.5 rounded-full bg-white  transition-all ease-linear duration-700"
           }`}
         ></div>
       </label>
