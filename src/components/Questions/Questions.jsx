@@ -21,8 +21,8 @@ function Questions({ question }) {
         <h3
           className={`${
             isDarkMode
-              ? "font-Rubix_Regular text-[1.5rem] md:text-[36px] lg:max-w-[23rem] text-[#FFFFFF] "
-              : "font-Rubix_Regular text-[1.5rem] md:text-[36px] lg:max-w-[23rem] text-[#313E51] "
+              ? "font-Rubix_Regular text-[1.5rem] md:text-[29px] lg:max-w-[40rem] lg:text-[29px] text-[#FFFFFF] "
+              : "font-Rubix_Regular text-[1.5rem] md:text-[29px] lg:max-w-[40rem] lg:text-[29px] text-[#313E51] "
           }`}
         >
           {question}

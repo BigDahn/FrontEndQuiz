@@ -2,16 +2,9 @@ import { useEffect, useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { quizzes } from "../../data.json";
+import getStorage from "../utils/Localstorage";
 
 const QuizContext = createContext();
-
-function getStorage() {
-  let theme = localStorage.getItem("theme");
-  if (theme) {
-    return JSON.parse(localStorage.getItem("theme"));
-  }
-  return false;
-}
 
 const initialState = {
   isLoading: true,
@@ -105,6 +98,7 @@ function reducer(state, action) {
       return {
         ...initialState,
         status: "ready",
+        isDarkMode: getStorage(),
       };
     }
   }
