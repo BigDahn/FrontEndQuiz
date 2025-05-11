@@ -3,16 +3,8 @@ import indexToLetter from "../../utils/Options";
 import { useQuiz } from "../../contexts/Quiz";
 
 function OptionsToBeSelected({ s, i }) {
-  const {
-    questionStart,
-    totalQuestions,
-    selectedAnswer,
-    correctAnswer,
-    isDarkMode,
-    isAnswerSubmitted,
-    error,
-    dispatch,
-  } = useQuiz();
+  const { selectedAnswer, correctAnswer, isDarkMode, isAnswerSubmitted } =
+    useQuiz();
   return (
     <>
       <div className="flex gap-2 justify-between text-[15px] items-center font-Rubix_Regular">

@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuiz } from "../../contexts/Quiz";
-import indexToLetter from "../../utils/Options";
+
 import Button from "../../Button";
 import OptionsToBeSelected from "./OptionsToBeSelected";
+import ErrorMessage from "./ErrorMessage";
 
 function OptionsTileBox({ options }) {
   const {
@@ -88,12 +89,7 @@ function OptionsTileBox({ options }) {
           Submit Answer
         </Button>
       )}
-      {error && (
-        <div className="text-red-600 text-center flex items-center gap-2 justify-center font-Rubix_Regular">
-          <img src="/assets/images/icon-error.svg" className="w-5" />
-          <h3>Please select an answer</h3>
-        </div>
-      )}
+      {error && <ErrorMessage />}
     </div>
   );
 }
