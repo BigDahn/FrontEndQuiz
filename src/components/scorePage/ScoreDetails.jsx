@@ -15,10 +15,10 @@ function ScoreDetails() {
               : "font-medium  text-[#313E51] "
           }`}
         >
-          <h1 className="font-Rubix_Regular text-[40px] lg:text-[50px] md:text-[64px]">
+          <h1 className="font-Rubik_Regular text-[40px] lg:text-[50px] md:text-[64px]">
             Quiz Completed
           </h1>
-          <h5 className="font-Rubix_Medium text-[40px] lg:text-[50px] md:text-[64px]">
+          <h5 className="font-Rubik_Medium text-[40px] lg:text-[50px] md:text-[64px]">
             You scored...
           </h5>
         </div>

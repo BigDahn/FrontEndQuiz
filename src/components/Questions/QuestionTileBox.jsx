@@ -3,7 +3,6 @@ import { useQuiz } from "../../contexts/Quiz";
 import Questions from "./Questions";
 
 import OptionsTileBox from "./OptionsTileBox";
-import Button from "../../Button";
 
 function QuestionTileBox({ questions }) {
   const { questionStart } = useQuiz();

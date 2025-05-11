@@ -8,12 +8,12 @@ function HomeContent() {
       <h2
         className={`${
           isDarkMode
-            ? " text-[40px] md:text-[4rem] md:max-w-[30rem] text-white font-Rubix_Regular   "
-            : " text-[40px] md:text-[4rem] md:max-w-[30rem] text-[#313E51] font-Rubix_Regular   "
+            ? " text-[40px] md:text-[4rem] md:max-w-[30rem] text-white font-Rubik_Regular   "
+            : " text-[40px] md:text-[4rem] md:max-w-[30rem] text-[#313E51] font-Rubik_Regular   "
         }`}
       >
         Welcome to the
-        <span className="font-Rubix_Medium font-bold"> Frontend Quiz!</span>
+        <span className="font-Rubik_Medium font-bold"> Frontend Quiz!</span>
       </h2>
       <p
         className={`${

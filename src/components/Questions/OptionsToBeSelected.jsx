@@ -7,7 +7,7 @@ function OptionsToBeSelected({ s, i }) {
     useQuiz();
   return (
     <>
-      <div className="flex gap-2 justify-between text-[15px] items-center font-Rubix_Regular">
+      <div className="flex gap-2 justify-between text-[15px] items-center font-Rubik_Regular">
         <h3
           className={`${
             isAnswerSubmitted

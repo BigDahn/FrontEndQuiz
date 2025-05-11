@@ -13,7 +13,7 @@ function Scores() {
             : "bg-white shadow-2xl flex flex-col items-center rounded-2xl  py-[2rem] px-[4rem]"
         }`}
       >
-        <h3 className="font-Rubix_Regular text-[29px]">
+        <h3 className="font-Rubik_Regular text-[29px]">
           {data.map((s, i) => {
             const { title, icon } = s;
             return (
@@ -22,8 +22,8 @@ function Scores() {
                 <h3
                   className={`${
                     isDarkMode
-                      ? "font-medium  text-white  font-Rubix_Regular"
-                      : "font-medium  text-[#313E51] font-Rubix_Regular"
+                      ? "font-medium  text-white  font-Rubik_Regular"
+                      : "font-medium  text-[#313E51] font-Rubik_Regular"
                   }`}
                 >
                   {title}
@@ -36,8 +36,8 @@ function Scores() {
           <h1
             className={`${
               isDarkMode
-                ? "font-medium  text-white text-[100px] font-Rubix_Regular"
-                : "font-medium  text-[#313E51] text-[100px] font-Rubix_Regular"
+                ? "font-medium  text-white text-[100px] font-Rubik_Regular"
+                : "font-medium  text-[#313E51] text-[100px] font-Rubik_Regular"
             }`}
           >
             {score}
@@ -45,8 +45,8 @@ function Scores() {
           <p
             className={`${
               isDarkMode
-                ? "font-medium  text-white text-[2rem] font-Rubix_Regular"
-                : "font-medium  text-[#313E51] text-[2rem] font-Rubix_Regular"
+                ? "font-medium  text-white text-[2rem] font-Rubik_Regular"
+                : "font-medium  text-[#313E51] text-[2rem] font-Rubik_Regular"
             }`}
           >
             out of 10
@@ -54,7 +54,7 @@ function Scores() {
         </div>
       </div>
       <button
-        className="bg-[#A729F5] py-4 cursor-pointer rounded-2xl font-Rubix_Regular font-black text-white"
+        className="bg-[#A729F5] py-4 cursor-pointer rounded-2xl font-Rubik_Regular font-black text-white"
         onClick={() => {
           dispatch({ type: "restart" });
         }}

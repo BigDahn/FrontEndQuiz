@@ -68,7 +68,7 @@ function OptionsTileBox({ options }) {
         </Button>
       ) : isAnswerSubmitted ? (
         <Button
-          className="bg-purple-500 py-3  rounded-2xl font-Rubix_Regular text-[#FFFFFF]"
+          className="bg-purple-500 py-3  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
           onClick={() => {
             dispatch({ type: "next" });
           }}
@@ -79,8 +79,8 @@ function OptionsTileBox({ options }) {
         <Button
           className={`${
             selectedAnswer
-              ? "bg-purple-500 py-3  rounded-2xl font-Rubix_Regular text-[#FFFFFF]"
-              : "bg-[#d394fa] py-3  rounded-2xl font-Rubix_Regular text-[#FFFFFF]"
+              ? "bg-purple-500 py-3  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
+              : "bg-[#d394fa] py-3  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
           }`}
           onClick={() => {
             dispatch({ type: "submit" });

@@ -22,8 +22,8 @@ function QuizTileBox({ title, icon }) {
         <h2
           className={`${
             isDarkMode
-              ? "font-medium  text-white text-[2rem] font-Rubix_Regular"
-              : "font-medium  text-[#313E51] text-[2rem] font-Rubix_Regular"
+              ? "font-medium  text-white text-[2rem] font-Rubik_Regular"
+              : "font-medium  text-[#313E51] text-[2rem] font-Rubik_Regular"
           }`}
         >
           {title}
