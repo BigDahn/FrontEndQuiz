@@ -6,6 +6,8 @@ import getStorage from "../utils/Localstorage";
 
 const QuizContext = createContext();
 
+const seconds = 30;
+
 const initialState = {
   isLoading: true,
   status: "loading",
@@ -14,14 +16,13 @@ const initialState = {
   questionStart: 1,
   totalQuestions: null,
   selectedAnswer: null,
+  minsPerQuestion: seconds,
   correctAnswer: null,
   error: false,
   score: 0,
   isFinished: false,
   isAnswerSubmitted: false,
 };
-
-//console.log(themeToggle());
 
 function reducer(state, action) {
   switch (action.type) {
@@ -42,7 +43,6 @@ function reducer(state, action) {
       const questionLength = state.data.filter(
         (s) => s.title === action.payload
       )[0].questions.length;
-
       return {
         ...state,
         status: "start",
@@ -55,7 +55,6 @@ function reducer(state, action) {
         state.questionStart >= state.totalQuestions
           ? 0
           : state.questionStart + 1;
-
       return {
         ...state,
         questionStart:
@@ -64,6 +63,7 @@ function reducer(state, action) {
         selectedAnswer: null,
         isFisnished: state.questionStart >= state.totalQuestions ? true : false,
         isAnswerSubmitted: false,
+        minsPerQuestion: seconds,
       };
     }
     case "select": {
@@ -89,7 +89,7 @@ function reducer(state, action) {
     case "lastQuestion": {
       return {
         ...state,
-        error: state.selectedAnswer === null ? true : false,
+        error: state.selectedAnswer === "" ? true : false,
         status: state.selectedAnswer ? "finished" : "start",
         isFisnished: state.questionStart >= state.totalQuestions ? true : false,
       };
@@ -99,6 +99,18 @@ function reducer(state, action) {
         ...initialState,
         status: "ready",
         isDarkMode: getStorage(),
+      };
+    }
+    case "timer": {
+      const ans =
+        state.minsPerQuestion <= 1 && state.selectedAnswer === null
+          ? "time out"
+          : state.selectedAnswer;
+      return {
+        ...state,
+        minsPerQuestion:
+          state.minsPerQuestion <= 1 ? 0 : state.minsPerQuestion - 1,
+        selectedAnswer: ans,
       };
     }
   }
@@ -118,6 +130,7 @@ function FrontEndQuiz({ children }) {
       isFisnished,
       isAnswerSubmitted,
       score,
+      minsPerQuestion,
       error,
     },
     dispatch,
@@ -141,6 +154,7 @@ function FrontEndQuiz({ children }) {
         isAnswerSubmitted,
         error,
         score,
+        minsPerQuestion,
         dispatch,
       }}
     >

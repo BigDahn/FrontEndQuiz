@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuiz } from "../../contexts/Quiz";
 
 import Button from "../../Button";
@@ -14,11 +14,33 @@ function OptionsTileBox({ options }) {
     isDarkMode,
     isAnswerSubmitted,
     error,
+    minsPerQuestion,
     dispatch,
   } = useQuiz();
 
+  const sec = minsPerQuestion % 60;
+  const seconds = sec < 10 ? `0${sec}` : sec;
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      dispatch({ type: "timer" });
+    }, 1000);
+
+    return () => clearInterval(time);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (minsPerQuestion === 0 && questionStart < totalQuestions) {
+      return dispatch({ type: "next" });
+    } else if (minsPerQuestion === 0 && questionStart <= totalQuestions) {
+      dispatch({
+        type: "lastQuestion",
+      });
+    }
+  }, [dispatch, minsPerQuestion, questionStart, totalQuestions]);
+
   return (
-    <div className="flex flex-col gap-3 md:gap-4 w-full  ">
+    <div className="flex flex-col gap-3 md:gap-4 w-full   ">
       {options.map((s, i) => {
         //3B4D66
         return (
@@ -79,14 +101,25 @@ function OptionsTileBox({ options }) {
         <Button
           className={`${
             selectedAnswer
-              ? "bg-purple-500 py-3  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
-              : "bg-[#d394fa] py-3  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
+              ? "bg-purple-500 py-3 flex items-center justify-center gap-2  transition ease-linear delay-700  rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
+              : "bg-[#d394fa] py-3 flex items-center justify-center gap-2  transition ease-linear delay-700 rounded-2xl font-Rubik_Regular text-[#FFFFFF]"
           }`}
           onClick={() => {
             dispatch({ type: "submit" });
           }}
         >
-          Submit Answer
+          <div className="font-Rubik_Medium flex items-center justify-center gap-5  ">
+            <h3
+              className={`${
+                minsPerQuestion <= 10
+                  ? "w-[1rem] animate-pulse text-red-700"
+                  : "hidden"
+              }`}
+            >
+              {seconds}
+            </h3>
+            <h5 className="font-Rubik_Regular">Submit Answer</h5>
+          </div>
         </Button>
       )}
       {error && <ErrorMessage />}
